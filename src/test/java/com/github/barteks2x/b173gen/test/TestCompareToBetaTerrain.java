@@ -54,45 +54,45 @@ public class TestCompareToBetaTerrain {
         BiomeOld.init(cfg);
     }
 
-    @Test
-    public void test01Terrain() throws IOException, DataFormatException {
-        doTest(new ChunkSourceTerrain(), "01_terrain", null);
-    }
-
-    @Test
-    public void test02BiomeSurface() throws IOException, DataFormatException {
-        doTest(new ChunkSourceBiomes(), "02_biome_surface", "01_terrain");
-    }
-
-    @Test
-    public void test03Caves() throws IOException, DataFormatException {
-        doTest(new ChunkSourceCaves(), "03_caves", "02_biome_surface");
-    }
-
-    @Test
-    public void test04PopulationWaterLakes() throws IOException, DataFormatException {
-        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "WaterLakes")), "04_population_water_lakes", "03_caves");
-    }
-
-    @Test
-    public void test05PopulationLavaLakes() throws IOException, DataFormatException {
-        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "LavaLakes")), "05_population_lava_lakes", "03_caves");
-    }
-
-    @Test
-    public void test06PopulationDungeons() throws IOException, DataFormatException {
-        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Dungeons")), "06_population_dungeons", "03_caves");
-    }
-
-    @Test
-    public void test07PopulationClay() throws IOException, DataFormatException {
-        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Clay")), "07_population_clay", "03_caves");
-    }
-
-    @Test
-    public void test08PopulationMinables() throws IOException, DataFormatException {
-        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Lapis")), "08_population_minables", "03_caves");
-    }
+//    @Test
+//    public void test01Terrain() throws IOException, DataFormatException {
+//        doTest(new ChunkSourceTerrain(), "01_terrain", null);
+//    }
+//
+//    @Test
+//    public void test02BiomeSurface() throws IOException, DataFormatException {
+//        doTest(new ChunkSourceBiomes(), "02_biome_surface", "01_terrain");
+//    }
+//
+//    @Test
+//    public void test03Caves() throws IOException, DataFormatException {
+//        doTest(new ChunkSourceCaves(), "03_caves", "02_biome_surface");
+//    }
+//
+//    @Test
+//    public void test04PopulationWaterLakes() throws IOException, DataFormatException {
+//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "WaterLakes")), "04_population_water_lakes", "03_caves");
+//    }
+//
+//    @Test
+//    public void test05PopulationLavaLakes() throws IOException, DataFormatException {
+//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "LavaLakes")), "05_population_lava_lakes", "03_caves");
+//    }
+//
+//    @Test
+//    public void test06PopulationDungeons() throws IOException, DataFormatException {
+//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Dungeons")), "06_population_dungeons", "03_caves");
+//    }
+//
+//    @Test
+//    public void test07PopulationClay() throws IOException, DataFormatException {
+//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Clay")), "07_population_clay", "03_caves");
+//    }
+//
+//    @Test
+//    public void test08PopulationMinables() throws IOException, DataFormatException {
+//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Lapis")), "08_population_minables", "03_caves");
+//    }
 
     // currently fails, getting this to pass would be too much work (requires light propagation)
     // @Test
