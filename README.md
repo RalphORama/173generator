@@ -1,12 +1,8 @@
-# No longer updated!
-This plugin is not maintained anymore. I am no longer working on bukkit and spigot plugins.
-If you need it updated, contact me directly, or update it yourself. 
-The current code in this state should continue working even with Minecraft 1.13 and up, until spigot breaks backwards compatibility again.
+# Beta 1.7.3 World Generator for MC 1.16
 
-## Beta 1.7.3 world generator
-This plugin generates beta 1.7.3 terrain.
+This is a revitalization of Barteks2x/173generator, updated for Minecraft 1.16+.
+It is currently in a semi-broken state. The plugin compiles and runs, but errors out when generating a world.
 
-[Bukkit dev page](http://dev.bukkit.org/server-mods/b173gen/)
 
 ### Usage
 
