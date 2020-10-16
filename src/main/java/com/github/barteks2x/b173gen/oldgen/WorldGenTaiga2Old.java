@@ -12,9 +12,9 @@ import java.util.Random;
 
 import static org.bukkit.Material.AIR;
 import static org.bukkit.Material.DIRT;
-import static org.bukkit.Material.GRASS;
-import static org.bukkit.Material.LEAVES;
-import static org.bukkit.Material.LOG;
+import static org.bukkit.Material.GRASS_BLOCK;
+import static org.bukkit.Material.OAK_LEAVES;
+import static org.bukkit.Material.OAK_LOG;
 
 public class WorldGenTaiga2Old implements WorldGenerator173 {
 
@@ -47,7 +47,7 @@ public class WorldGenTaiga2Old implements WorldGenerator173 {
                     for(int l2 = k - k2; l2 <= k + k2 && flag; ++l2) {
                         if(l1 >= 0 && l1 < WorldConfig.heightLimit) {
                             block = world.getType(i2, l1, l2);
-                            if(block != AIR && block != LEAVES) {
+                            if(block != AIR && block != OAK_LEAVES) {
                                 flag = false;
                             }
                         } else {
@@ -61,7 +61,7 @@ public class WorldGenTaiga2Old implements WorldGenerator173 {
                 return false;
             } else {
                 block = world.getType(i, j - 1, k);
-                if((block == GRASS || block == DIRT) && j < WorldConfig.heightLimit - l - 1) {
+                if((block == GRASS_BLOCK || block == DIRT) && j < WorldConfig.heightLimit - l - 1) {
                     world.setType(i, j - 1, k, DIRT);
                     k2 = random.nextInt(2);
                     i2 = 1;
@@ -81,7 +81,7 @@ public class WorldGenTaiga2Old implements WorldGenerator173 {
 
                                 if((Math.abs(k3) != k2 || Math.abs(i4) != k2 || k2 <= 0)
                                         && world.isEmpty(i3, j3, l3)) {
-                                    world.setType(i3, j3, l3, LEAVES, new Leaves(TreeSpecies.REDWOOD));
+                                    world.setType(i3, j3, l3, OAK_LEAVES, new Leaves(TreeSpecies.REDWOOD));
                                 }
                             }
                         }
@@ -102,8 +102,8 @@ public class WorldGenTaiga2Old implements WorldGenerator173 {
 
                     for(j3 = 0; j3 < l - a; ++j3) {
                         Material mat = world.getType(i, j + j3, k);
-                        if(mat == AIR || mat == LEAVES) {
-                            world.setType(i, j + j3, k, LOG, new Tree(TreeSpecies.REDWOOD));
+                        if(mat == AIR || mat == OAK_LEAVES) {
+                            world.setType(i, j + j3, k, OAK_LOG, new Tree(TreeSpecies.REDWOOD));
                         }
                     }
 

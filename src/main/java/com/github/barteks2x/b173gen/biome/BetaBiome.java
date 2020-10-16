@@ -9,7 +9,7 @@ import java.util.Random;
 public class BetaBiome {
 
     public static final BetaBiome RAINFOREST = new BetaBiome("Rainforest", "RAINFOREST", "JUNGLE"),
-            SWAMPLAND = new BetaBiome("Swampland", "SWAMPLAND"),
+            SWAMP = new BetaBiome("Swamp", "SWAMP"),
             SEASONAL_FOREST = new BetaBiome("Seasonal forest", "SEASONAL_FOREST", "SEASONALFOREST", "FOREST"),
             FOREST = new BetaBiome("Forest", "FOREST"),
             SAVANNA = new BetaBiome("Savanna", "SAVANNA", "PLAINS"),
@@ -37,7 +37,7 @@ public class BetaBiome {
     }
 
     public Biome getBiome(WorldConfig cfg) {
-        if (cfg.noswamps && this.bukkitBiome == Biome.SWAMPLAND) {
+        if (cfg.noswamps && this.bukkitBiome == Biome.SWAMP) {
             return Biome.PLAINS;
         }
         return bukkitBiome;

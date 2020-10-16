@@ -151,7 +151,7 @@ public class WorldGenCavesOld extends WorldGenBaseOld {
                                     || previousBlock == DIRT
                                     || previousBlock == GRASS) {
                                 if (localY < 10) {
-                                    data.setBlock(localX, localY + 1, localZ, STATIONARY_LAVA);
+                                    data.setBlock(localX, localY + 1, localZ, LEGACY_STATIONARY_LAVA);
                                 } else {
                                     data.setBlock(localX, localY + 1, localZ, AIR);
                                     if (hitGrassSurface && data.getType(localX, localY, localZ) == DIRT) {
@@ -190,7 +190,7 @@ public class WorldGenCavesOld extends WorldGenBaseOld {
                         continue;
                     }
                     if (data.getType(xPos, yPos, zPos) == WATER
-                            || data.getType(xPos, yPos, zPos) == STATIONARY_WATER) {
+                            || data.getType(xPos, yPos, zPos) == LEGACY_STATIONARY_WATER) {
                         return true;
                     }
                     if (yPos != startY - 1 && xPos != startX && xPos != endX - 1

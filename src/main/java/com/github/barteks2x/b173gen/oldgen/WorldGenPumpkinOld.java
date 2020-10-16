@@ -24,7 +24,7 @@ public class WorldGenPumpkinOld implements WorldGenerator173 {
             int z = k + random.nextInt(8) - random.nextInt(8);
 
             if(world.isEmpty(x, y, z)
-                    && world.getType(x, y - 1, z) == Material.GRASS
+                    && world.getType(x, y - 1, z) == Material.GRASS_BLOCK
                     && MinecraftMethods.Block_canPlace(Material.PUMPKIN, world, x, y, z)) {
                 world.setType(x, y, z, Material.PUMPKIN, new Pumpkin(randomFacing(random)));
             }

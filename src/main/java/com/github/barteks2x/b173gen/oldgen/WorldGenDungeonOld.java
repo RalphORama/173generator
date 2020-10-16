@@ -119,7 +119,7 @@ public class WorldGenDungeonOld implements WorldGenerator173 {
             }
         }
 
-        w.setType(xPos, yPos, zPos, Material.MOB_SPAWNER);
+        w.setType(xPos, yPos, zPos, Material.LEGACY_MOB_SPAWNER);
         CreatureSpawner tileentitymobspawner = (CreatureSpawner) w.getBlockState(xPos, yPos, zPos);
 
         tileentitymobspawner.setSpawnedType(this.getRandomMob(random));
@@ -140,7 +140,7 @@ public class WorldGenDungeonOld implements WorldGenerator173 {
             case 3:
                 return new ItemStack(Material.WHEAT, random.nextInt(4) + 1);
             case 4:
-                return new ItemStack(Material.SULPHUR, random.nextInt(4) + 1);
+                return new ItemStack(Material.GUNPOWDER, random.nextInt(4) + 1);
             case 5:
                 return new ItemStack(Material.STRING, random.nextInt(4) + 1);
             case 6:
@@ -160,9 +160,9 @@ public class WorldGenDungeonOld implements WorldGenerator173 {
             case 9:
                 if (random.nextInt(10) == 0) {
                     if(random.nextInt(2) == 0) {
-                        return new ItemStack(Material.GOLD_RECORD);
+                        return new ItemStack(Material.LEGACY_GOLD_RECORD);
                     } else {
-                        return new ItemStack(Material.GREEN_RECORD);
+                        return new ItemStack(Material.LEGACY_GREEN_RECORD);
                     }
                 } else {
                     return null;

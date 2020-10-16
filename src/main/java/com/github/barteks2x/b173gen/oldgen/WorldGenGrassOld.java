@@ -21,7 +21,7 @@ public class WorldGenGrassOld implements WorldGenerator173 {
         Material l;
 
         for(; ((l = world.getType(i, j, k)) == Material.AIR
-                || l == Material.LEAVES) && j > 0; --j) {
+                || l == Material.OAK_LEAVES) && j > 0; --j) {
         }
 
         for(int i1 = 0; i1 < 128; ++i1) {

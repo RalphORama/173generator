@@ -5,8 +5,8 @@ import com.github.barteks2x.b173gen.config.WorldConfig;
 import com.github.barteks2x.b173gen.generator.WorldGenerator173;
 import org.bukkit.Material;
 import org.bukkit.TreeSpecies;
-import org.bukkit.material.Leaves;
 import org.bukkit.material.Tree;
+import org.bukkit.material.Leaves;
 
 import java.util.Random;
 
@@ -34,7 +34,7 @@ public class WorldGenBirchTreeOld implements WorldGenerator173 {
                 for(int l2 = k - byte0; l2 <= k + byte0 && flag; l2++) {
                     if(i1 >= 0 && i1 < WorldConfig.heightLimit) {
                         Material j3 = world.getType(i2, i1, l2);
-                        if(j3 != Material.AIR && j3 != Material.LEAVES) {
+                        if(j3 != Material.AIR && j3 != Material.BIRCH_LEAVES) {
                             flag = false;
                         }
                     } else {
@@ -50,7 +50,7 @@ public class WorldGenBirchTreeOld implements WorldGenerator173 {
             return false;
         }
         Material j1 = world.getType(i, j - 1, k);
-        if(j1 != Material.GRASS && j1 != Material.DIRT || j >= WorldConfig.heightLimit - l - 1) {
+        if(j1 != Material.GRASS_BLOCK && j1 != Material.DIRT || j >= WorldConfig.heightLimit - l - 1) {
             return false;
         }
         world.setType(i, j - 1, k, Material.DIRT);
@@ -62,7 +62,7 @@ public class WorldGenBirchTreeOld implements WorldGenerator173 {
                 for(int i4 = k - i3; i4 <= k + i3; i4++) {
                     int j4 = i4 - k;
                     if((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0)) {
-                        world.setType(k3, k1, i4, Material.LEAVES, new Leaves(TreeSpecies.BIRCH));
+                        world.setType(k3, k1, i4, Material.BIRCH_LEAVES, new Leaves(TreeSpecies.BIRCH));
                     }
                 }
 
@@ -72,8 +72,8 @@ public class WorldGenBirchTreeOld implements WorldGenerator173 {
 
         for(int l1 = 0; l1 < l; l1++) {
             Material k2 = world.getType(i, j + l1, k);
-            if(k2 == Material.AIR || k2 == Material.LEAVES) {
-                world.setType(i, j + l1, k, Material.LOG, new Tree(TreeSpecies.BIRCH));
+            if(k2 == Material.AIR || k2 == Material.BIRCH_LEAVES) {
+                world.setType(i, j + l1, k, Material.BIRCH_LOG, new Tree(TreeSpecies.BIRCH));
             }
         }
 

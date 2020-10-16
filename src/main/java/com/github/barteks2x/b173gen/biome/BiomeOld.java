@@ -28,10 +28,10 @@ import static com.github.barteks2x.b173gen.biome.BetaBiome.RAINFOREST;
 import static com.github.barteks2x.b173gen.biome.BetaBiome.SAVANNA;
 import static com.github.barteks2x.b173gen.biome.BetaBiome.SEASONAL_FOREST;
 import static com.github.barteks2x.b173gen.biome.BetaBiome.SHRUBLAND;
-import static com.github.barteks2x.b173gen.biome.BetaBiome.SWAMPLAND;
+import static com.github.barteks2x.b173gen.biome.BetaBiome.SWAMP;
 import static com.github.barteks2x.b173gen.biome.BetaBiome.TAIGA;
 import static com.github.barteks2x.b173gen.biome.BetaBiome.TUNDRA;
-import static org.bukkit.Material.LONG_GRASS;
+import static org.bukkit.Material.GRASS;
 
 public class BiomeOld {
 
@@ -114,9 +114,9 @@ public class BiomeOld {
 
     public static WorldGenerator173 getRandomGrassGenerator(Random rand, BetaBiome biome) {
         if (biome.equals(RAINFOREST) && rand.nextInt(3) != 0) {
-            return new WorldGenGrassOld(LONG_GRASS, new LongGrass(GrassSpecies.FERN_LIKE));
+            return new WorldGenGrassOld(GRASS, new LongGrass(GrassSpecies.FERN_LIKE));
         } else {
-            return new WorldGenGrassOld(LONG_GRASS, new LongGrass(GrassSpecies.NORMAL));
+            return new WorldGenGrassOld(GRASS, new LongGrass(GrassSpecies.NORMAL));
         }
     }
 
@@ -144,7 +144,7 @@ public class BiomeOld {
         f1 *= f;
         return f < 0.1F ? TUNDRA
                 : (f1 < 0.2F ? (f < 0.5F ? TUNDRA : (f < 0.95F ? SAVANNA : DESERT))
-                : (f1 > 0.5F && f < 0.7F ? SWAMPLAND
+                : (f1 > 0.5F && f < 0.7F ? SWAMP
                 : (f < 0.5F ? TAIGA : (f < 0.97F ? (f1 < 0.35F ? SHRUBLAND : FOREST)
                 : (f1 < 0.45F ? PLAINS : (f1 < 0.9F ? SEASONAL_FOREST : RAINFOREST))))));
     }
