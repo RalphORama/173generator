@@ -1,7 +1,8 @@
 name: ${name}
-version: 2.4-MC1.12
+version: ${version}
+api-version: 1.16
 description: ${description}
-authors: [Barteks2x]
+authors: [Barteks2x, RalphORama]
 main: ${groupId}.${artifactId}.Generator
 load: startup
 softdepend: [ProtocolLib]
@@ -9,7 +10,7 @@ commands:
     173generator:
         description: 173generator commands
         usage: |
-            /173generator regenbiomes [world=worldname] [maxTickMillis=number] - regenerate biomes in world [worldname] with [number] of milliseconds per tick for regenerating biomes. If using from console world must be specified. Default maxTickMillis is 10.
+                /173generator regenbiomes [world=worldname] [maxTickMillis=number] - regenerate biomes in world [worldname] with [number] of milliseconds per tick for regenerating biomes. If using from console world must be specified. Default maxTickMillis is 10.
 permissions:
     b173gen.regenbiomes: 
         description: /173generator regenbiomes command

@@ -2,20 +2,20 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.barteks2x</groupId>
     <artifactId>b173gen</artifactId>
-    <version>2.4-MC1.12</version>
+    <version>3.0.0</version>
     <name>173generator</name>
     <description>Beta 1.7.* terrain generator for bukkit</description>
     <properties>
         <!--Special git describe version allows for empty prefix & suffix-->
         <gitdescribe-prefix/>
         <gitdescribe-suffix/>
-        <protocolLibVersion>4.3.0</protocolLibVersion>
+        <protocolLibVersion>4.6.0</protocolLibVersion>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.16.3-R0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.flowpowered</groupId>
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -53,7 +53,7 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        <finalName>${project.artifactId}-2.4-MC1.12</finalName>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <pluginManagement>
 	        <plugins>
 	            <!--git-describe plugin-->
@@ -114,7 +114,7 @@
         <!--Repository for modified git-describe plugin (allows empty prefix and suffix)-->
         <pluginRepository>
             <id>Github-maven-repo</id>
-            <url>https://github.com/Barteks2x/maven-repo/raw/master/snapshots</url>
+            <url>https://github.com/RalphORama/maven-repo/raw/master/snapshots</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
@@ -122,8 +122,8 @@
         </pluginRepository>
     </pluginRepositories>
     <scm>
-        <connection>scm:git:git://github.com/Barteks2x/173generator.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/Barteks2x/173generator.git</developerConnection>
-        <url>https://github.com/Barteks2x/173generator</url>
+        <connection>scm:git:git://github.com/RalphORama/173generator.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/RalphORama/173generator.git</developerConnection>
+        <url>https://github.com/RalphORama/173generator</url>
     </scm>
 </project>
