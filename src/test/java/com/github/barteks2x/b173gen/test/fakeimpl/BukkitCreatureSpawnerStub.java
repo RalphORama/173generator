@@ -6,9 +6,11 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.CreatureSpawner;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.EntityType;
 import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.MetadataValue;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.plugin.Plugin;
 
 import java.util.List;
@@ -117,11 +119,15 @@ class BukkitCreatureSpawnerStub implements CreatureSpawner {
     }
 
     @Override
+    public BlockData getBlockData() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public Material getType() {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public int getTypeId() {
         throw new UnsupportedOperationException();
     }
@@ -172,11 +178,15 @@ class BukkitCreatureSpawnerStub implements CreatureSpawner {
     }
 
     @Override
+    public void setBlockData(BlockData blockData) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public void setType(Material material) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean setTypeId(int i) {
         throw new UnsupportedOperationException();
     }
@@ -229,5 +239,10 @@ class BukkitCreatureSpawnerStub implements CreatureSpawner {
     @Override
     public void removeMetadata(String s, Plugin plugin) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public PersistentDataContainer getPersistentDataContainer() {
+        throw new UnsupportedOperationException("Not implemented");
     }
 }

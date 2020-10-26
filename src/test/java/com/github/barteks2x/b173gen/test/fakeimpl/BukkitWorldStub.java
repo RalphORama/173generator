@@ -2,44 +2,26 @@ package com.github.barteks2x.b173gen.test.fakeimpl;
 
 import com.github.barteks2x.b173gen.test.util.ChunkData;
 import com.github.barteks2x.b173gen.test.util.IChunkSource;
-import org.bukkit.BlockChangeDelegate;
-import org.bukkit.Chunk;
-import org.bukkit.ChunkSnapshot;
-import org.bukkit.Difficulty;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
-import org.bukkit.SoundCategory;
-import org.bukkit.TreeType;
-import org.bukkit.World;
-import org.bukkit.WorldBorder;
-import org.bukkit.WorldType;
+import org.bukkit.*;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.FallingBlock;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.LightningStrike;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.boss.DragonBattle;
+import org.bukkit.entity.*;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.util.BoundingBox;
 import org.bukkit.util.Consumer;
+import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+import java.util.function.Predicate;
 
 public class BukkitWorldStub implements World {
 
@@ -101,12 +83,10 @@ public class BukkitWorldStub implements World {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public int getBlockTypeIdAt(int i, int i1, int i2) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public int getBlockTypeIdAt(Location location) {
         throw new UnsupportedOperationException();
     }
@@ -129,6 +109,26 @@ public class BukkitWorldStub implements World {
     @Override
     public Block getHighestBlockAt(Location location) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getHighestBlockYAt(int i, int i1, HeightMap heightMap) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public int getHighestBlockYAt(Location location, HeightMap heightMap) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Block getHighestBlockAt(int i, int i1, HeightMap heightMap) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Block getHighestBlockAt(Location location, HeightMap heightMap) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -166,6 +166,11 @@ public class BukkitWorldStub implements World {
     }
 
     @Override
+    public boolean isChunkGenerated(int i, int i1) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public boolean isChunkInUse(int i, int i1) {
         throw new UnsupportedOperationException();
     }
@@ -194,7 +199,6 @@ public class BukkitWorldStub implements World {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean unloadChunk(int i, int i1, boolean b, boolean b1) {
         throw new UnsupportedOperationException();
     }
@@ -204,7 +208,6 @@ public class BukkitWorldStub implements World {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean unloadChunkRequest(int i, int i1, boolean b) {
         throw new UnsupportedOperationException();
     }
@@ -220,6 +223,46 @@ public class BukkitWorldStub implements World {
     }
 
     @Override
+    public boolean isChunkForceLoaded(int i, int i1) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setChunkForceLoaded(int i, int i1, boolean b) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Collection<Chunk> getForceLoadedChunks() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public boolean addPluginChunkTicket(int i, int i1, Plugin plugin) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public boolean removePluginChunkTicket(int i, int i1, Plugin plugin) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void removePluginChunkTickets(Plugin plugin) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Collection<Plugin> getPluginChunkTickets(int i, int i1) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Map<Plugin, Collection<Chunk>> getPluginChunkTickets() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public Item dropItem(Location location, ItemStack itemStack) {
         throw new UnsupportedOperationException();
     }
@@ -231,12 +274,12 @@ public class BukkitWorldStub implements World {
 
     @Override
     public Arrow spawnArrow(Location location, Vector vector, float v, float v1) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
-    public <T extends Arrow> T spawnArrow(Location location, Vector vector, float v, float v1, Class<T> aClass) {
-        throw new UnsupportedOperationException();
+    public <T extends AbstractArrow> T spawnArrow(Location location, Vector vector, float v, float v1, Class<T> aClass) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -300,6 +343,61 @@ public class BukkitWorldStub implements World {
     }
 
     @Override
+    public Collection<Entity> getNearbyEntities(Location location, double v, double v1, double v2, Predicate<Entity> predicate) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Collection<Entity> getNearbyEntities(BoundingBox boundingBox) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Collection<Entity> getNearbyEntities(BoundingBox boundingBox, Predicate<Entity> predicate) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTraceEntities(Location location, Vector vector, double v) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTraceEntities(Location location, Vector vector, double v, double v1) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTraceEntities(Location location, Vector vector, double v, Predicate<Entity> predicate) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTraceEntities(Location location, Vector vector, double v, double v1, Predicate<Entity> predicate) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTraceBlocks(Location location, Vector vector, double v) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTraceBlocks(Location location, Vector vector, double v, FluidCollisionMode fluidCollisionMode) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTraceBlocks(Location location, Vector vector, double v, FluidCollisionMode fluidCollisionMode, boolean b) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTrace(Location location, Vector vector, double v, FluidCollisionMode fluidCollisionMode, boolean b, double v1, Predicate<Entity> predicate) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public UUID getUID() {
         throw new UnsupportedOperationException();
     }
@@ -312,6 +410,11 @@ public class BukkitWorldStub implements World {
     @Override
     public boolean setSpawnLocation(Location location) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public boolean setSpawnLocation(int i, int i1, int i2, float v) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -395,6 +498,11 @@ public class BukkitWorldStub implements World {
     }
 
     @Override
+    public boolean createExplosion(double v, double v1, double v2, float v3, boolean b, boolean b1, Entity entity) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public boolean createExplosion(Location location, float v) {
         throw new UnsupportedOperationException();
     }
@@ -402,6 +510,16 @@ public class BukkitWorldStub implements World {
     @Override
     public boolean createExplosion(Location location, float v, boolean b) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public boolean createExplosion(Location location, float v, boolean b, boolean b1) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public boolean createExplosion(Location location, float v, boolean b, boolean b1, Entity entity) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -444,7 +562,6 @@ public class BukkitWorldStub implements World {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public FallingBlock spawnFallingBlock(Location location, int i, byte b) throws IllegalArgumentException {
         throw new UnsupportedOperationException();
     }
@@ -495,8 +612,18 @@ public class BukkitWorldStub implements World {
     }
 
     @Override
+    public Biome getBiome(int i, int i1, int i2) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public void setBiome(int i, int i1, Biome biome) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void setBiome(int i, int i1, int i2, Biome biome) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -505,8 +632,18 @@ public class BukkitWorldStub implements World {
     }
 
     @Override
+    public double getTemperature(int i, int i1, int i2) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public double getHumidity(int i, int i1) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public double getHumidity(int i, int i1, int i2) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -565,6 +702,16 @@ public class BukkitWorldStub implements World {
     }
 
     @Override
+    public boolean isHardcore() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setHardcore(boolean b) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public long getTicksPerAnimalSpawns() {
         throw new UnsupportedOperationException();
     }
@@ -582,6 +729,36 @@ public class BukkitWorldStub implements World {
     @Override
     public void setTicksPerMonsterSpawns(int i) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public long getTicksPerWaterSpawns() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setTicksPerWaterSpawns(int i) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public long getTicksPerWaterAmbientSpawns() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setTicksPerWaterAmbientSpawns(int i) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public long getTicksPerAmbientSpawns() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setTicksPerAmbientSpawns(int i) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -612,6 +789,16 @@ public class BukkitWorldStub implements World {
     @Override
     public void setWaterAnimalSpawnLimit(int i) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public int getWaterAmbientSpawnLimit() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setWaterAmbientSpawnLimit(int i) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -652,6 +839,21 @@ public class BukkitWorldStub implements World {
     @Override
     public boolean isGameRule(String s) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public <T> T getGameRuleValue(GameRule<T> gameRule) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public <T> T getGameRuleDefault(GameRule<T> gameRule) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public <T> boolean setGameRule(GameRule<T> gameRule, T t) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -720,6 +922,46 @@ public class BukkitWorldStub implements World {
     }
 
     @Override
+    public <T> void spawnParticle(Particle particle, Location location, int i, double v, double v1, double v2, double v3, T t, boolean b) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public <T> void spawnParticle(Particle particle, double v, double v1, double v2, int i, double v3, double v4, double v5, double v6, T t, boolean b) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Location locateNearestStructure(Location location, StructureType structureType, int i, boolean b) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public int getViewDistance() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Spigot spigot() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Raid locateNearestRaid(Location location, int i) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public List<Raid> getRaids() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public DragonBattle getEnderDragonBattle() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public void setMetadata(String s, MetadataValue metadataValue) {
         throw new UnsupportedOperationException();
     }
@@ -768,4 +1010,9 @@ public class BukkitWorldStub implements World {
 	public FallingBlock spawnFallingBlock(Location arg0, MaterialData arg1) throws IllegalArgumentException {
         throw new UnsupportedOperationException();
 	}
+
+    @Override
+    public FallingBlock spawnFallingBlock(Location location, BlockData blockData) throws IllegalArgumentException {
+        throw new UnsupportedOperationException("Not implemented");
+    }
 }

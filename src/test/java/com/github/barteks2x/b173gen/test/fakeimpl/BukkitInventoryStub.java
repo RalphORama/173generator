@@ -11,6 +11,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 public class BukkitInventoryStub implements Inventory {
     private final int size;
@@ -43,7 +45,6 @@ public class BukkitInventoryStub implements Inventory {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public String getName() {
         throw new UnsupportedOperationException();
     }
@@ -83,7 +84,6 @@ public class BukkitInventoryStub implements Inventory {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean contains(int materialId) {
         throw new UnsupportedOperationException();
     }
@@ -98,7 +98,6 @@ public class BukkitInventoryStub implements Inventory {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean contains(int materialId, int amount) {
         throw new UnsupportedOperationException();
     }
@@ -118,7 +117,6 @@ public class BukkitInventoryStub implements Inventory {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public HashMap<Integer, ? extends ItemStack> all(int materialId) {
         throw new UnsupportedOperationException();
     }
@@ -133,7 +131,6 @@ public class BukkitInventoryStub implements Inventory {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public int first(int materialId) {
         throw new UnsupportedOperationException();
     }
@@ -154,6 +151,10 @@ public class BukkitInventoryStub implements Inventory {
     }
 
     @Override
+    public boolean isEmpty() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
     public void remove(int materialId) {
         throw new UnsupportedOperationException();
     }
@@ -183,7 +184,6 @@ public class BukkitInventoryStub implements Inventory {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public String getTitle() {
         throw new UnsupportedOperationException();
     }
@@ -201,6 +201,16 @@ public class BukkitInventoryStub implements Inventory {
     @Override
     public ListIterator<ItemStack> iterator() {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void forEach(Consumer<? super ItemStack> action) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public Spliterator<ItemStack> spliterator() {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
