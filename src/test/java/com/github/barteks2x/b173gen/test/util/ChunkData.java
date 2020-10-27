@@ -56,7 +56,7 @@ public class ChunkData implements ChunkGenerator.ChunkData{
             return;
         }
         int pos = y | z << 7 | x << 11;
-        blockIds[pos] = (byte) material.getId();
+        blockIds[pos] = (byte) material.hashCode();
     }
 
     @Override

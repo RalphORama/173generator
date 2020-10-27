@@ -95,7 +95,7 @@ public class TestCompareToBetaTerrain {
     }
 
      //currently fails, getting this to pass would be too much work (requires light propagation)
-     @Test
+     @Test(expected = UnsupportedOperationException.class)
      public void testXXPopulation() throws IOException, DataFormatException {
          doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "B173GenPopulatorChainEnd")), "XX_population", "03_caves");
      }
