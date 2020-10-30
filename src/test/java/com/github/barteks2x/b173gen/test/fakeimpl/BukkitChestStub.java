@@ -6,9 +6,12 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.loot.LootTable;
 import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.MetadataValue;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.plugin.Plugin;
 
 import java.util.List;
@@ -46,11 +49,15 @@ class BukkitChestStub implements Chest {
     }
 
     @Override
+    public BlockData getBlockData() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public Material getType() {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public int getTypeId() {
         throw new UnsupportedOperationException();
     }
@@ -101,11 +108,15 @@ class BukkitChestStub implements Chest {
     }
 
     @Override
+    public void setBlockData(BlockData blockData) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public void setType(Material type) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean setTypeId(int type) {
         throw new UnsupportedOperationException();
     }
@@ -185,4 +196,38 @@ class BukkitChestStub implements Chest {
         throw new UnsupportedOperationException();
 	}
 
+    @Override
+    public PersistentDataContainer getPersistentDataContainer() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void open() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void close() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setLootTable(LootTable lootTable) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public LootTable getLootTable() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setSeed(long l) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public long getSeed() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
 }

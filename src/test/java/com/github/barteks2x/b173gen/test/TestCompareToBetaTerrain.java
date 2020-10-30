@@ -54,61 +54,71 @@ public class TestCompareToBetaTerrain {
         BiomeOld.init(cfg);
     }
 
-//    @Test
-//    public void test01Terrain() throws IOException, DataFormatException {
-//        doTest(new ChunkSourceTerrain(), "01_terrain", null);
-//    }
-//
-//    @Test
-//    public void test02BiomeSurface() throws IOException, DataFormatException {
-//        doTest(new ChunkSourceBiomes(), "02_biome_surface", "01_terrain");
-//    }
-//
-//    @Test
-//    public void test03Caves() throws IOException, DataFormatException {
-//        doTest(new ChunkSourceCaves(), "03_caves", "02_biome_surface");
-//    }
-//
-//    @Test
-//    public void test04PopulationWaterLakes() throws IOException, DataFormatException {
-//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "WaterLakes")), "04_population_water_lakes", "03_caves");
-//    }
-//
-//    @Test
-//    public void test05PopulationLavaLakes() throws IOException, DataFormatException {
-//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "LavaLakes")), "05_population_lava_lakes", "03_caves");
-//    }
-//
-//    @Test
-//    public void test06PopulationDungeons() throws IOException, DataFormatException {
-//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Dungeons")), "06_population_dungeons", "03_caves");
-//    }
-//
-//    @Test
-//    public void test07PopulationClay() throws IOException, DataFormatException {
-//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Clay")), "07_population_clay", "03_caves");
-//    }
-//
-//    @Test
-//    public void test08PopulationMinables() throws IOException, DataFormatException {
-//        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Lapis")), "08_population_minables", "03_caves");
-//    }
+    @Test
+    public void test01Terrain() throws IOException, DataFormatException {
+        doTest(new ChunkSourceTerrain(), "01_terrain", null);
+    }
 
-    // currently fails, getting this to pass would be too much work (requires light propagation)
-    // @Test
-    // public void testXXPopulation() throws IOException, DataFormatException {
-    //     doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "B173GenPopulatorChainEnd")), "XX_population", "03_caves");
-    // }
+    @Test
+    public void test02BiomeSurface() throws IOException, DataFormatException {
+        doTest(new ChunkSourceBiomes(), "02_biome_surface", "01_terrain");
+    }
+
+    @Test
+    public void test03Caves() throws IOException, DataFormatException {
+        doTest(new ChunkSourceCaves(), "03_caves", "02_biome_surface");
+    }
+
+    @Test
+    public void test04PopulationWaterLakes() throws IOException, DataFormatException {
+        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "WaterLakes")), "04_population_water_lakes", "03_caves");
+    }
+
+    @Test
+    public void test05PopulationLavaLakes() throws IOException, DataFormatException {
+        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "LavaLakes")), "05_population_lava_lakes", "03_caves");
+    }
+
+    @Test
+    public void test06PopulationDungeons() throws IOException, DataFormatException {
+        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Dungeons")), "06_population_dungeons", "03_caves");
+    }
+
+    @Test
+    public void test07PopulationClay() throws IOException, DataFormatException {
+        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Clay")), "07_population_clay", "03_caves");
+    }
+
+    @Test
+    public void test08PopulationMinables() throws IOException, DataFormatException {
+        doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "Lapis")), "08_population_minables", "03_caves");
+    }
+
+     //currently fails, getting this to pass would be too much work (requires light propagation)
+     @Test(expected = UnsupportedOperationException.class)
+     public void testXXPopulation() throws IOException, DataFormatException {
+         doTest(new ChunkSourcePopulation(getPopulatorsFor(populators, "B173GenPopulatorChainEnd")), "XX_population", "03_caves");
+     }
 
     private void doTest(IChunkModifier chunkModifier, String name, String dependency) throws IOException, DataFormatException {
         IChunkModifier chunkSource = chunkModifier;
-        ChunkModifierTester compare = ChunkModifierTester.create(chunkSource, dependency == null ? null : res(dependency), res(name), chunksFile, expectedDiffFile(name), MAX_DIFF);
+        File correctRegions = res(name);
+        if (correctRegions == null) {
+            correctRegions = getTestResourceFile().getParentFile();
+        }
+        File chunksList = chunksFile == null ? File.createTempFile("chunkTempFile", null) : chunksFile;
+        ChunkModifierTester compare = ChunkModifierTester.create(chunkSource, dependency == null ? null : res(dependency), correctRegions, chunksList, expectedDiffFile(name), MAX_DIFF);
         compare.setupWorld(world);
 
         ChunkModifierTester.TestResults actualResults = compare.start();
-        ChunkModifierTester.TestResults expectedRegults = new ChunkModifierTester.TestResults(MAX_DIFF);
+        ChunkModifierTester.TestResults expectedResults = new ChunkModifierTester.TestResults(MAX_DIFF);
 
-        assertEquals("The generated world must be equal to saved world", expectedRegults, actualResults);
+        assertEquals("The generated world must be equal to saved world", expectedResults, actualResults);
+    }
+
+    private File getTestResourceFile() {
+        String testResource = getClass().getResource("/TestDir/TestResource.txt").getFile();
+        return new File(testResource);
     }
 
     private static File expectedDiffFile(String testName) {

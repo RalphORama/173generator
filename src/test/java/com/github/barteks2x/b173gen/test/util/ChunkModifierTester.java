@@ -155,16 +155,16 @@ public class ChunkModifierTester {
                         Material generatedBlock = generatedChunk.getBlock(x, y, z);
                         Material expectedBlock = data.getBlock(x, y, z);
                         if (IGNORE_LIQUID_TYPE_DIFFERENCE) {
-                            if (generatedBlock == Material.STATIONARY_WATER) {
+                            if (generatedBlock == Material.LEGACY_STATIONARY_WATER) {
                                 generatedBlock = Material.WATER;
                             }
-                            if (generatedBlock == Material.STATIONARY_LAVA) {
+                            if (generatedBlock == Material.LEGACY_STATIONARY_LAVA) {
                                 generatedBlock = Material.LAVA;
                             }
-                            if (expectedBlock == Material.STATIONARY_WATER) {
+                            if (expectedBlock == Material.LEGACY_STATIONARY_WATER) {
                                 expectedBlock = Material.WATER;
                             }
-                            if (expectedBlock == Material.STATIONARY_LAVA) {
+                            if (expectedBlock == Material.LEGACY_STATIONARY_LAVA) {
                                 expectedBlock = Material.LAVA;
                             }
                         }

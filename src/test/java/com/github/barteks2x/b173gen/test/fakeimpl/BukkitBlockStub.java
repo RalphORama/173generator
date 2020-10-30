@@ -1,14 +1,16 @@
 package com.github.barteks2x.b173gen.test.fakeimpl;
 
 import com.github.barteks2x.b173gen.test.util.BlockUtils;
-import org.bukkit.Chunk;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.*;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.Entity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.util.BoundingBox;
+import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.Vector;
 
 import java.util.Collection;
 import java.util.List;
@@ -44,7 +46,7 @@ public class BukkitBlockStub implements Block {
 
     @Override
     public boolean isLiquid() {
-        return type == Material.WATER || type == Material.STATIONARY_WATER || type == Material.LAVA || type == Material.STATIONARY_LAVA;
+        return type == Material.WATER || type == Material.LEGACY_STATIONARY_WATER || type == Material.LAVA || type == Material.LEGACY_STATIONARY_LAVA;
     }
 
     //approximate value, heightmap only. Causes some differences
@@ -72,7 +74,7 @@ public class BukkitBlockStub implements Block {
     public BlockState getState() {
         //TODO: Add more cases as needed
         switch(type) {
-            case MOB_SPAWNER:
+            case LEGACY_MOB_SPAWNER:
                 return new BukkitCreatureSpawnerStub();
             case CHEST:
                 return new BukkitChestStub();
@@ -92,6 +94,11 @@ public class BukkitBlockStub implements Block {
     }
 
     @Override
+    public BlockData getBlockData() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public Block getRelative(int i, int i1, int i2) {
         throw new UnsupportedOperationException();
     }
@@ -106,7 +113,6 @@ public class BukkitBlockStub implements Block {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public int getTypeId() {
         throw new UnsupportedOperationException();
     }
@@ -157,11 +163,21 @@ public class BukkitBlockStub implements Block {
     }
 
     @Override
+    public void setBlockData(BlockData blockData) {
+        throw new UnsupportedOperationException("Not implemented");
+
+    }
+
+    @Override
+    public void setBlockData(BlockData blockData, boolean b) {
+        throw new UnsupportedOperationException("Not implemented");
+
+    }
+
     public void setData(byte b) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public void setData(byte b, boolean b1) {
         throw new UnsupportedOperationException();
     }
@@ -171,17 +187,14 @@ public class BukkitBlockStub implements Block {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean setTypeId(int i) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean setTypeId(int i, boolean b) {
         throw new UnsupportedOperationException();
     }
 
-    @Override
     public boolean setTypeIdAndData(int i, byte b, boolean b1) {
         throw new UnsupportedOperationException();
     }
@@ -257,6 +270,11 @@ public class BukkitBlockStub implements Block {
     }
 
     @Override
+    public boolean applyBoneMeal(BlockFace blockFace) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public Collection<ItemStack> getDrops() {
         throw new UnsupportedOperationException();
     }
@@ -264,6 +282,26 @@ public class BukkitBlockStub implements Block {
     @Override
     public Collection<ItemStack> getDrops(ItemStack itemStack) {
         throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Collection<ItemStack> getDrops(ItemStack itemStack, Entity entity) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public boolean isPassable() {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public RayTraceResult rayTrace(Location location, Vector vector, double v, FluidCollisionMode fluidCollisionMode) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public BoundingBox getBoundingBox() {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override

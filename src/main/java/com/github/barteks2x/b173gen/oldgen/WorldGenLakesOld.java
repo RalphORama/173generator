@@ -63,6 +63,7 @@ public class WorldGenLakesOld implements WorldGenerator173 {
                         continue;
                     }
                     Material block = world.getType(blockX + localX, blockY + localY, blockZ + localZ);
+                    if (block == null) return false;
                     //if above liquid surface and is liquid
                     if(localY >= 4 && (block == Material.LEGACY_WATER || block == Material.LEGACY_STATIONARY_WATER ||
                             block == Material.LEGACY_LAVA || block == Material.LEGACY_STATIONARY_LAVA)) {

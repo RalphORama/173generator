@@ -1,6 +1,7 @@
 package com.github.barteks2x.b173gen.test.util;
 
 import org.bukkit.Material;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.material.MaterialData;
 
@@ -37,7 +38,7 @@ public class ChunkData implements ChunkGenerator.ChunkData{
             return Material.AIR;
         }
         int pos = y | z << 7 | x << 11;
-        return Material.getMaterial(blockIds[pos] & 0xFF);
+        return Material.getMaterial(String.valueOf(blockIds[pos] & 0xFF));
     }
 
     public RegionChunkPosition getPosition() {
@@ -55,12 +56,17 @@ public class ChunkData implements ChunkGenerator.ChunkData{
             return;
         }
         int pos = y | z << 7 | x << 11;
-        blockIds[pos] = (byte) material.getId();
+        blockIds[pos] = (byte) material.hashCode();
     }
 
     @Override
     public void setBlock(int x, int y, int z, MaterialData materialData) {
         setBlock(x, y, z, materialData.getItemType());
+    }
+
+    @Override
+    public void setBlock(int i, int i1, int i2, BlockData blockData) {
+        throw new UnsupportedOperationException("Not implemented");
     }
 
     @Override
@@ -70,6 +76,11 @@ public class ChunkData implements ChunkGenerator.ChunkData{
 
     @Override
     public void setRegion(int i, int i1, int i2, int i3, int i4, int i5, MaterialData materialData) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
+    public void setRegion(int i, int i1, int i2, int i3, int i4, int i5, BlockData blockData) {
         throw new UnsupportedOperationException("Not implemented");
     }
 
@@ -84,26 +95,26 @@ public class ChunkData implements ChunkGenerator.ChunkData{
     }
 
     @Override
+    public BlockData getBlockData(int i, int i1, int i2) {
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
     public void setRegion(int i, int i1, int i2, int i3, int i4, int i5, int i6) {
         throw new UnsupportedOperationException("Not implemented");
     }
 
-    @Override
     public void setRegion(int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7) {
         throw new UnsupportedOperationException("Not implemented");
     }
 
-    @Override
     public void setBlock(int i, int i1, int i2, int i3) {
         throw new UnsupportedOperationException("Not implemented");
     }
 
-    @Override
     public void setBlock(int i, int i1, int i2, int i3, byte b) {
         throw new UnsupportedOperationException("Not implemented");
     }
 
-    @Override
     public int getTypeId(int i, int i1, int i2) {
         throw new UnsupportedOperationException("Not implemented");
     }

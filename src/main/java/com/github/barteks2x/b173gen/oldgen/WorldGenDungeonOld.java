@@ -31,6 +31,7 @@ public class WorldGenDungeonOld implements WorldGenerator173 {
                 for (z = zPos - rz - 1; z <= zPos + rz + 1; ++z) {
 
                     Material block = w.getType(x, y, z);
+                    if (block == null) return false;
                     if (y == yPos - 1 && !block.isSolid()) {
                         return false;
                     }

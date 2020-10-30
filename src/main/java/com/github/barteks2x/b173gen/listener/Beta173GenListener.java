@@ -77,7 +77,7 @@ public class Beta173GenListener implements Listener {
         if(event == null || event.getItem() == null) {
             return;
         }
-        if(event.getItem().getType() == Material.EYE_OF_ENDER) {
+        if(event.getItem().getType() == Material.LEGACY_EYE_OF_ENDER) {
             Player player = event.getPlayer();
             World world = player.getLocation().getWorld();
             WorldConfig cfg;
